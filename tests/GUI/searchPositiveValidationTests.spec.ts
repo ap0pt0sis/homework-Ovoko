@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await navigateToBaseUrlAndHandleCookies(page);
 });
 
-test("SearchItem", async ({ page }) => {
+test("Search Item", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   const searchTerm = testData.headphones;

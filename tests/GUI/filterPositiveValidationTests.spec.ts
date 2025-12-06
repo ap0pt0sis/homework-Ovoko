@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await navigateToBaseUrlAndHandleCookies(page);
 });
 
-test("FilterProductByBrand", async ({ page }) => {
+test("Filter Product By Brand", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.headphones);
@@ -22,7 +22,7 @@ test("FilterProductByBrand", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("FilterProductByPriceRange", async ({ page }) => {
+test("Filter Product By Price Range", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.headphones);

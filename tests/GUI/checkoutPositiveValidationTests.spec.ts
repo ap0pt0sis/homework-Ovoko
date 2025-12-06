@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
   await navigateToBaseUrlAndHandleCookies(page);
 });
 
-test("FillInShipToInformation", async ({ page }) => {
+test("Fill In Ship to Information", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.sonyHeadphones);

@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
   await navigateToBaseUrlAndHandleCookies(page);
 });
 
-test("AddProductToTheCard", async ({ page }) => {
+test("Add Product to Card", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.sonyHeadphones);
@@ -25,7 +25,7 @@ test("AddProductToTheCard", async ({ page }) => {
   await expect(page2.getByText("Added to cart")).toBeVisible();
 });
 
-test("RemoveProductFromTheCard", async ({ page }) => {
+test("Remove Product from Card", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.sonyHeadphones);
@@ -44,7 +44,7 @@ test("RemoveProductFromTheCard", async ({ page }) => {
   await expect(page2.getByText("You don't have any items in")).toBeVisible();
 });
 
-test("ReturnToCardFromCheckout", async ({ page }) => {
+test("Return to Card from Checkout", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.sonyHeadphones);

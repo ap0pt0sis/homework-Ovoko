@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install playwright click [here](https://playwright.dev/docs/intro).
+Install Playwright by following the official guide provided [here](https://playwright.dev/docs/intro). In the project’s root directory, run: `npm install`. This will install all required dependencies, including Playwright if it’s listed in your package.json.
 
 ## Running Tests
 
