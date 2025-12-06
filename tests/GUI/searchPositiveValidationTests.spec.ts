@@ -1,16 +1,20 @@
 import { test, expect } from "@playwright/test";
-import * as search from '../../pages/search';
+import { navigateToBaseUrlAndHandleCookies } from "../utils/navigation";
+import { SearchPage } from "../pages/searchPage";
+import { testData } from "../testData/test-data";
+
+test.beforeEach(async ({ page }) => {
+  await navigateToBaseUrlAndHandleCookies(page);
+});
 
 test("SearchItem", async ({ page }) => {
-  const url = process.env.URL;
-  if (!url) {
-    throw new Error("URL environment variable is not set");
-  }
-  await page.goto(url);
-  await page.getByRole('button', { name: 'Decline all privacy terms and' }).click();
+  // Arrange
+  const searchPage = new SearchPage(page);
+  const searchTerm = testData.headphones;
 
-  await page.getByRole('combobox', { name: 'Search for anything' }).fill('headphones');
-  await page.getByRole('button', { name: 'Search', exact: true }).click();
+  // Act
+  await searchPage.search(searchTerm);
 
-  await expect(page.getByRole('combobox', { name: 'Search for anything' })).toHaveValue('headphones');
+  // Assert
+  await expect(searchPage.searchInput).toHaveValue(searchTerm);
 });

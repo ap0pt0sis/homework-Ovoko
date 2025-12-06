@@ -1,81 +1,66 @@
 import { test, expect } from "@playwright/test";
 import { navigateToBaseUrlAndHandleCookies } from "../utils/navigation";
-// import { LoginPage } from "../pages/LoginPage";
-// import { DashboardPage } from "../pages/DashboardPage";
-// import { testData } from "../testData/test-data";
+import { SearchPage } from "../pages/searchPage";
+import { ProductPage } from "../pages/productPage";
+import { CartPage } from "../pages/cartPage";
+import { testData } from "../testData/test-data";
 
 test.beforeEach(async ({ page }) => {
   await navigateToBaseUrlAndHandleCookies(page);
 });
 
 test("AddProductToTheCard", async ({ page }) => {
-  await page
-    .getByRole("combobox", { name: "Search for anything" })
-    .fill("Sony - WH-CH720N Wireless Noise Canceling Headphones - Blue");
-  await page.getByRole("button", { name: "Search", exact: true }).click();
-  await page
-    .locator("a[class='s-card__link'][href^='https://www.ebay.com/itm']")
-    .nth(2)
-    .click();
+  // Arrange
+  const searchPage = new SearchPage(page);
+  await searchPage.search(testData.sonyHeadphones);
+  await searchPage.clickSearchResult(2);
 
+  // Act
   const page2Promise = page.waitForEvent("popup");
   const page2 = await page2Promise;
-  await page2
-    .getByTestId("x-atc-action")
-    .getByTestId("ux-call-to-action")
-    .click();
+  const productPage = new ProductPage(page2);
+  await productPage.addToCart();
 
-  // const colorPrompt = page.getByText("Please select a Color");
-  // if (await colorPrompt.isVisible()) {
-  //   await page.getByRole("option").first().click();
-  // }
-
+  // Assert
   await expect(page2.getByText("Added to cart")).toBeVisible();
 });
 
 test("RemoveProductFromTheCard", async ({ page }) => {
-  await page
-    .getByRole("combobox", { name: "Search for anything" })
-    .fill("Sony - WH-CH720N Wireless Noise Canceling Headphones - Blue");
-  await page.getByRole("button", { name: "Search", exact: true }).click();
-  await page
-    .locator("a[class='s-card__link'][href^='https://www.ebay.com/itm']")
-    .first()
-    .click();
+  // Arrange
+  const searchPage = new SearchPage(page);
+  await searchPage.search(testData.sonyHeadphones);
+  await searchPage.clickSearchResult();
   const page2Promise = page.waitForEvent("popup");
   const page2 = await page2Promise;
-  await page2
-    .getByTestId("x-atc-action")
-    .getByTestId("ux-call-to-action")
-    .click();
+  const productPage = new ProductPage(page2);
+  await productPage.addToCart();
 
-  await page2.getByRole("link", { name: "See in cart" }).click();
-  await page2.locator('[data-test-id="cart-remove-item"]').click();
+  // Act
+  await productPage.seeInCart();
+  const cartPage = new CartPage(page2);
+  await cartPage.removeItem();
 
+  // Assert
   await expect(page2.getByText("You don't have any items in")).toBeVisible();
 });
 
 test("ReturnToCardFromCheckout", async ({ page }) => {
-  await page
-    .getByRole("combobox", { name: "Search for anything" })
-    .fill("Sony - WH-CH720N Wireless Noise Canceling Headphones - Blue");
-  await page.getByRole("button", { name: "Search", exact: true }).click();
-  await page
-    .locator("a[class='s-card__link'][href^='https://www.ebay.com/itm']")
-    .nth(0)
-    .click();
+  // Arrange
+  const searchPage = new SearchPage(page);
+  await searchPage.search(testData.sonyHeadphones);
+  await searchPage.clickSearchResult(0);
   const page2Promise = page.waitForEvent("popup");
   const page2 = await page2Promise;
-  await page2
-    .getByTestId("x-atc-action")
-    .getByTestId("ux-call-to-action")
-    .click();
-
-  await page2.getByRole("link", { name: "See in cart" }).click();
+  const productPage = new ProductPage(page2);
+  await productPage.addToCart();
+  
+  // Act
+  await productPage.seeInCart();
   await page2.waitForLoadState('load');
-  await page2.getByRole("button", { name: "Go to checkout" }).click();
-  await page2.getByRole("button", { name: "Continue as guest" }).click();
+  const cartPage = new CartPage(page2);
+  await cartPage.goToCheckoutAsGuest();
   await page2.goBack();
   
-  await expect(page2.locator('[data-test-id="main-title"]')).toHaveText('Shopping cart');
+  // Assert
+  await expect(cartPage.mainTitle).toHaveText('Shopping cart');
 });
