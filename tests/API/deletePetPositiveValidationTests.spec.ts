@@ -1,20 +1,20 @@
 import { test, expect } from "@playwright/test";
 import { PetService } from "../services/petService";
 
-test("Create 4 available pets", async ({ request }) => {
+test("Delete multiple pets", async ({ request }) => {
   // Arrange
   const petService = new PetService(request);
   const petIds = [1, 2, 3, 4];
+  const createdPetIds = await petService.createPets(petIds);
 
   // Act
-  const createdPetIds = await petService.createPets(petIds);
-  
+  for (const petId of createdPetIds) {
+    await petService.deletePet(petId);
+  }
+
   // Assert
-  expect(createdPetIds).toHaveLength(4);
   for (const petId of createdPetIds) {
     const getResponse = await petService.getPet(petId);
-    expect(getResponse.status()).toBe(200);
-    const pet = await getResponse.json();
-    expect(pet.status).toBe("available");
+    expect(getResponse.status()).toBe(404);
   }
 });

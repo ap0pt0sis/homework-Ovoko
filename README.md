@@ -2,7 +2,9 @@
 
 ## Installation
 
-Install Playwright by following the official guide provided [here](https://playwright.dev/docs/intro). In the project’s root directory, run: `npm install`. This will install all required dependencies, including Playwright if it’s listed in your package.json.
+1. Install Playwright by following the official guide provided [here](https://playwright.dev/docs/intro). 
+2. In the project’s root directory, run: `npm install`. This will install all required dependencies, including Playwright if it’s listed in your package.json.
+3. Copy file `.env.template` to `.env` and add env variables there.
 
 ## Running Tests
 
@@ -31,7 +33,3 @@ After each test run, test report will be generated automatically. In case of the
 ## CI/CD
 
 Tests are runned in Guthub Actions on every push to main branch.
-
-## Additional Info
-
-Please copy file `.env.template` to `.env` and add URL there.

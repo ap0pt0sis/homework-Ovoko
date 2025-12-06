@@ -15,9 +15,16 @@ export const petTemplate = {
   tags: [
     {
       id: 1,
-      name: "white",
+      name: "purple",
     },
   ],
   status: "available",
+};
+
+export const orderTemplate = {
+  quantity: 2,
+  shipDate: "2025-12-06T15:09:00.766Z",
+  status: "placed",
+  complete: true,
 };
 
