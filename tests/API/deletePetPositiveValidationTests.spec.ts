@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { PetService } from "../services/petService";
 
-test("Delete multiple pets", async ({ request }) => {
+test("Delete Multiple Pets", async ({ request }) => {
   // Arrange
   const petService = new PetService(request);
   const petIds = [5, 6, 7, 8];

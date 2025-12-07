@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { PetService } from "../services/petService";
 import { OrderService } from "../services/orderService";
 
-test("Delete multiple orders", async ({ request }) => {
+test("Delete Multiple Orders", async ({ request }) => {
   // Arrange
   const petService = new PetService(request);
   const orderService = new OrderService(request);

@@ -27,7 +27,7 @@ npx playwright test -g "test name"
 
 ## Reporting
 
-After each test run, test report will be generated automatically. In case of the failure, screenshotand video recording will be provided in `/test-results` folder and in the test report.
+After each test run, test report will be generated automatically. In case of the failure, screenshot and video recording will be provided in `/test-results` folder and in the test report.
 
 ## CI/CD
 
@@ -35,4 +35,4 @@ Tests are runned in Guthub Actions on every push to main branch (for demonstrati
 
 ## Additional Info
 
-By default, tests are run on two browsers: Chrome and MS Edge.
+By default, E2E tests are run on two browsers: Chrome and MS Edge.

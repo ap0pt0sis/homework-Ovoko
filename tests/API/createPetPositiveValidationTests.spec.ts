@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { PetService } from "../services/petService";
 
-test("Create 4 available pets", async ({ request }) => {
+test("Create 4 Available Pets", async ({ request }) => {
   // Arrange
   const petService = new PetService(request);
   const petIds = [1, 2, 3, 4];
