@@ -21,7 +21,7 @@ test("Fill In Ship to Information", async ({ page }) => {
   const productPage = new ProductPage(page2);
   await productPage.addToCart();
   await productPage.seeInCart();
-  await page2.waitForLoadState('load');
+  await page2.waitForLoadState("load");
   const cartPage = new CartPage(page2);
   await cartPage.goToCheckoutAsGuest();
   

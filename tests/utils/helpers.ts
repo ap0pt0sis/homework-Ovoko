@@ -1,6 +1,6 @@
 export function generateRandomString(length: number): string {
-  const chars = 'abcdefghijklmnopqrstuvwxyz';
-  let result = '';
+  const chars = "abcdefghijklmnopqrstuvwxyz";
+  let result = "";
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
@@ -8,8 +8,8 @@ export function generateRandomString(length: number): string {
 }
 
 export function generateRandomAlphanumeric(length: number): string {
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
+  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
@@ -22,8 +22,8 @@ export function generateRandomEmail(length: number = 10): string {
 }
 
 export function generateRandomPhone(length: number = 8): string {
-  const digits = '0123456789';
-  let result = '';
+  const digits = "0123456789";
+  let result = "";
   for (let i = 0; i < length; i++) {
     result += digits.charAt(Math.floor(Math.random() * digits.length));
   }

@@ -6,7 +6,7 @@ test("Delete multiple orders", async ({ request }) => {
   // Arrange
   const petService = new PetService(request);
   const orderService = new OrderService(request);
-  const petIds = [1, 2, 3, 4];
+  const petIds = [5, 6, 7, 8];
   const createdPetIds = await petService.createPets(petIds);
   const createdOrderIds = await orderService.createOrdersForPetIds(createdPetIds);
 

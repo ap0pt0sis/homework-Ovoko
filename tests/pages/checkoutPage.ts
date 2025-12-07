@@ -29,16 +29,16 @@ export class CheckoutPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.firstNameInput = page.getByRole('textbox', { name: 'First name' });
-    this.lastNameInput = page.getByRole('textbox', { name: 'Last name' });
-    this.streetAddressInput = page.getByRole('textbox', { name: 'Street address', exact: true });
-    this.streetAddress2Input = page.getByRole('textbox', { name: 'Street address 2 (optional)' });
-    this.cityInput = page.getByRole('textbox', { name: 'City' });
-    this.stateInput = page.getByRole('textbox', { name: 'State/Province/Region' });
-    this.zipCodeInput = page.getByRole('textbox', { name: 'ZIP code' });
-    this.emailInput = page.getByRole('textbox', { name: 'Email', exact: true });
-    this.confirmEmailInput = page.getByRole('textbox', { name: 'Confirm email' });
-    this.phoneNumberInput = page.getByRole('textbox', { name: 'Phone number (required)' });
+    this.firstNameInput = page.getByRole("textbox", { name: "First name" });
+    this.lastNameInput = page.getByRole("textbox", { name: "Last name" });
+    this.streetAddressInput = page.getByRole("textbox", { name: "Street address", exact: true });
+    this.streetAddress2Input = page.getByRole("textbox", { name: "Street address 2 (optional)" });
+    this.cityInput = page.getByRole("textbox", { name: "City" });
+    this.stateInput = page.getByRole("textbox", { name: "State/Province/Region" });
+    this.zipCodeInput = page.getByRole("textbox", { name: "ZIP code" });
+    this.emailInput = page.getByRole("textbox", { name: "Email", exact: true });
+    this.confirmEmailInput = page.getByRole("textbox", { name: "Confirm email" });
+    this.phoneNumberInput = page.getByRole("textbox", { name: "Phone number (required)" });
     this.submitButton = page.locator('[data-test-id="ADD_ADDRESS_SUBMIT"]');
   }
 

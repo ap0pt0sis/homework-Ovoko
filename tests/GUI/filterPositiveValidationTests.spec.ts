@@ -11,7 +11,7 @@ test("Filter Product By Brand", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.headphones);
-  await page.waitForTimeout(2000); // bad practice, I know :(
+  await page.waitForTimeout(3000); // bad practice, I know :(
 
   // Act
   await page.getByLabel("Sony", { exact: true }).check();
@@ -26,7 +26,7 @@ test("Filter Product By Price Range", async ({ page }) => {
   // Arrange
   const searchPage = new SearchPage(page);
   await searchPage.search(testData.headphones);
-  await page.waitForTimeout(2000); // bad practice, I know :(
+  await page.waitForTimeout(3000); // bad practice, I know :(
   
   // Act
   await searchPage.filterByPriceRange("50", "200");

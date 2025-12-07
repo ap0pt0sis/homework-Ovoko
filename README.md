@@ -1,10 +1,9 @@
 # homework-Ovoko
 
-## Installation
+## Setup
 
-1. Install Playwright by following the official guide provided [here](https://playwright.dev/docs/intro). 
-2. In the project’s root directory, run: `npm install`. This will install all required dependencies, including Playwright if it’s listed in your package.json.
-3. Copy file `.env.template` to `.env` and add env variables there.
+1. In the project’s root directory, run: `npm install`. This will install all required dependencies, including Playwright if it’s listed in your package.json.
+2. Copy file `.env.template` to `.env` and add env variables there.
 
 ## Running Tests
 
@@ -28,8 +27,12 @@ npx playwright test -g "test name"
 
 ## Reporting
 
-After each test run, test report will be generated automatically. In case of the failure, screenshot will be provided in `/test-results` folder.
+After each test run, test report will be generated automatically. In case of the failure, screenshotand video recording will be provided in `/test-results` folder and in the test report.
 
 ## CI/CD
 
-Tests are runned in Guthub Actions on every push to main branch.
+Tests are runned in Guthub Actions on every push to main branch (for demonstration purposes, only one test is running).
+
+## Additional Info
+
+By default, tests are run on two browsers: Chrome and MS Edge.

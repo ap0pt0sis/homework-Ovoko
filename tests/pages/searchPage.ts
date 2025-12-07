@@ -31,6 +31,12 @@ export class SearchPage {
   async filterByPriceRange(min: string, max: string): Promise<void> {
     await this.minPriceInput.fill(min);
     await this.maxPriceInput.fill(max);
+    await this.page.waitForTimeout(1000);
     await this.submitPriceRangeButton.click();
+  }
+
+    async filterByPriceRangeWithoutSubmit(min: string, max: string): Promise<void> {
+    await this.minPriceInput.fill(min);
+    await this.maxPriceInput.fill(max);
   }
 }

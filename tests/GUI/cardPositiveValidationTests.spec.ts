@@ -56,11 +56,11 @@ test("Return to Card from Checkout", async ({ page }) => {
   
   // Act
   await productPage.seeInCart();
-  await page2.waitForLoadState('load');
+  await page2.waitForLoadState("load");
   const cartPage = new CartPage(page2);
   await cartPage.goToCheckoutAsGuest();
   await page2.goBack();
   
   // Assert
-  await expect(cartPage.mainTitle).toHaveText('Shopping cart');
+  await expect(cartPage.mainTitle).toHaveText("Shopping cart");
 });

@@ -7,19 +7,28 @@ export default defineConfig({
   testDir: "./tests",
   timeout: 30 * 1000,
   expect: { timeout: 5000 },
-  reporter: "html",
+  reporter: [["html"]],
+  workers: 1,
   use: {
     headless: false, 
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    video: "retain-on-failure"
   },
   projects: [
     {
       name: "chromium",
+      testDir: "./tests/GUI",
       use: { ...devices["Desktop Chrome"] },
     },
-    // {
-    //   name: "firefox",
-    //   use: { ...devices["Desktop Firefox"] },
-    // },
+    {
+      name: "edge",
+      testDir: "./tests/GUI",
+      use: { ...devices["Desktop Edge"] },
+    },
+    {
+      name: "api",
+      testDir: "./tests/API",
+      use: {},
+    },
   ],
 });
