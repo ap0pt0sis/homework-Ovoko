@@ -10,7 +10,7 @@ export async function navigateToBaseUrl(page: Page): Promise<void> {
 
 export async function navigateToBaseUrlAndHandleCookies(page: Page): Promise<void> {
   await navigateToBaseUrl(page);
-  await page
-    .getByRole("button", { name: "Decline all privacy terms and" })
-    .click();
+  const declineButton = page.getByRole("button", { name: "Decline all privacy terms and" });
+  if (await declineButton.isVisible()) {
+    await declineButton.click();
 }
