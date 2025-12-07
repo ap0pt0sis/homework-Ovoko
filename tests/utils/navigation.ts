@@ -13,4 +13,5 @@ export async function navigateToBaseUrlAndHandleCookies(page: Page): Promise<voi
   const declineButton = page.getByRole("button", { name: "Decline all privacy terms and" });
   if (await declineButton.isVisible()) {
     await declineButton.click();
+  }
 }
